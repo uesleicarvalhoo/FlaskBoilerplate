@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+    {% endblock head %}
+    {% block extra_scripts %} {% endblock extra_scripts %}
+    {% block extra_css %} {% endblock extra_css %}
+</head>
+{% block nav %}
+    {% block menu %}
+    {% endblock menu%}
+</nav>
+{% endblock nav %}
+{% block top %} {% endblock top %}
+<div>
+    <body>
+        {% block body %}
+        {% endblock body %}
+    </body>
+</div>
+<footer>
+    {% block footer %}
+    <footer>
+    </footer>
+    {% endblock footer %}
+</footer>
+
+</html>
