@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, flash, render_template, request
 from werkzeug.utils import redirect
 
 from src.ext.auth import logout_current_user, validate_user

@@ -1,3 +1,4 @@
+from datetime import date, datetime, time
 from typing import Dict, List
 
 from src.ext.database import db
@@ -28,5 +29,18 @@ class BaseModel(db.Model):
 
     @classmethod
     def to_dict(cls) -> Dict:
-        # TODO: Implementar a recorrencia
-        return {key: value for key, value in cls.__mapper__.items()}
+        pass
+
+    @classmethod
+    def to_json(cls) -> Dict:
+        data = cls.to_dict()
+
+        for col, value in data.items():
+            if isinstance(value, datetime) or isinstance(value, date) or isinstance(value, time):
+                data[col] = value.isoformat()
+            elif isinstance(value, list):
+                data[col] = [obj.to_json() if isinstance(obj, BaseModel) else obj for obj in value]
+            elif isinstance(value, BaseModel):
+                data[col] = value.to_json()
+
+        return data

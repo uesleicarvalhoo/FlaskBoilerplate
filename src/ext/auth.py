@@ -1,4 +1,5 @@
 from typing import Tuple
+
 from flask import Flask
 from flask_login import LoginManager, login_user, logout_user
 from werkzeug.security import check_password_hash
